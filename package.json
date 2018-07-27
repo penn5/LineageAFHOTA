@@ -1,0 +1,19 @@
+{
+  "name": "LineageAFHOTA",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "body-parser": "^1.18.3",
+    "unirest": "^0.5.1",
+    "assert": "^1.4.1"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
