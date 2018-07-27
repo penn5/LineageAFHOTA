@@ -23,7 +23,7 @@ function apiRoute(req, res) {
       result.push({'incremental': file.md5hash.slice(0,10), 'api_level': 0, 'url': file.url, 'timestamp': file.upload_date, 'filename': file.name, 'channel': new RegExp('-').split(file.name)[3]});
     });
     respons = {'id': null, 'result': result, 'error': null};
-    res.send(respons)
+    res.send(respons);
   });
 }
 
