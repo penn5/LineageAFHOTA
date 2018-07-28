@@ -9,9 +9,9 @@ app.use(bodyParser.urlencoded({'extended': true}));
 function getFLID(device) {
   var lookup = {'lld': '266525', 'leland': '266525', 'hi6250': '266525'};
   return lookup[device];
-  }
+}
 function apiRoute(req, res) {
-  unirest.get('https://androidfilehost.com/api/).query({'action': 'folder', 'flid': getFLID(req.params['device'])}).end(function (response) {
+  unirest.get('https://androidfilehost.com/api/').query({'action': 'folder', 'flid': getFLID(req.params['device'])}).end(function (response) {
     console.log(response.body);
     assert.equal(response.body.STATUS, 1);
     assert.equal(response.body.CODE, 200);
