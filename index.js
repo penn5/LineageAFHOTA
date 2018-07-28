@@ -11,7 +11,7 @@ function getFLID(device) {
   return lookup[device];
   }
 function apiRoute(req, res) {
-  unirest.get('https://androidfilehost.com/api/?action=folder&flid='+getFLID(req.params['device'])).end(function (response) {
+  unirest.get('https://androidfilehost.com/api/).query({'action': 'folder', 'flid': getFLID(req.params['device'])}).end(function (response) {
     console.log(response.body);
     assert.equal(response.body.STATUS, 1);
     assert.equal(response.body.CODE, 200);
