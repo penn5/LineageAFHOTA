@@ -26,4 +26,4 @@ function apiRoute(req, res) {
 
 
 app.get('/api/v1/:device', apiRoute);
-app.listen(80);
+app.listen(8080);
