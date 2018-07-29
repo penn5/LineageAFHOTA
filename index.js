@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var unirest = require('unirest');
+const request = require('request');
 var bodyParser = require('body-parser');
 var assert = require('assert');
 app.use(bodyParser.json()); // for parsing application/json
@@ -11,12 +11,13 @@ function getFLID(device) {
   return lookup[device];
 }
 function apiRoute(req, res) {
-  unirest.get('https://androidfilehost.com/api/').query({'action': 'folder', 'flid': getFLID(req.params['device'])}).end(function (response) {
-    console.log(response.body);
-    assert.equal(response.body.STATUS, 1);
-    assert.equal(response.body.CODE, 200);
+  request('https://androidfilehost.com/api/?action=folder&flid=', {json: true}, function (error, response, body) {
+    console.log(error);
+    console.log(body);
+    assert.equal(body.STATUS, 1);
+    assert.equal(body.CODE, 200);
     var result = [];
-    response.body.DATA.files.forEach(function(file) {
+    body.DATA.files.forEach(function(file) {
       result.push({'incremental': file.md5hash.slice(0,10), 'api_level': 0, 'url': file.url, 'timestamp': file.upload_date, 'filename': file.name, 'channel': new RegExp('-').split(file.name)[3]});
     });
     var respons = {'id': null, 'result': result, 'error': null};
