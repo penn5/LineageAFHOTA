@@ -18,7 +18,7 @@ function apiRoute(req, res) {
     assert.equal(body.CODE, 200);
     var result = [];
     body.DATA.files.forEach(function(file) {
-      result.push({'incremental': file.md5hash.slice(0,10), 'api_level': 0, 'url': file.url, 'timestamp': file.upload_date, 'filename': file.name, 'channel': new RegExp('-').split(file.name)[3]});
+      result.push({'incremental': file.md5hash.slice(0,10), 'api_level': 0, 'url': file.url, 'timestamp': file.upload_date, 'filename': file.name, 'channel': file.name.split(/-/)[3]});
     });
     var respons = {'id': null, 'result': result, 'error': null};
     res.send(respons);
