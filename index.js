@@ -11,7 +11,7 @@ function getFLID(device) {
   return lookup[device];
 }
 function apiRoute(req, res) {
-  request('https://androidfilehost.com/api/?action=folder&flid=', {json: true}, function (error, response, body) {
+  request('https://httpbin.org/get', {json: false}, function (error, response, body) {
     console.log(error);
     console.log(body);
     assert.equal(body.STATUS, 1);
