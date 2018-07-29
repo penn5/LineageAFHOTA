@@ -6,7 +6,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "body-parser": "^1.18.3",
-    "unirest": "^0.5.1",
+    "request": "^2.81.0",
     "assert": "^1.4.1"
   },
   "engine": {
