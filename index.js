@@ -18,7 +18,7 @@ function apiRoute(req, res) {
     assert.equal(body.CODE, 200);
     var result = [];
     body.DATA.files.forEach(function(file) {
-      result.push({'id': file.md5hash, 'md5sum': file.md5hash, 'version': file.name.split(/-/)[1], 'size': Number(file.file_size), 'url': file.url, 'datetime': Number(file.upload_date), 'filename': file.name, 'romtype': file.name.split(/-/)[3]});
+      //result.push({'id': file.md5hash, 'md5sum': file.md5hash, 'version': file.name.split(/-/)[1], 'size': Number(file.file_size), 'url': file.url, 'datetime': Number(file.upload_date), 'filename': file.name, 'romtype': file.name.split(/-/)[3]});
     });
     var respons = {'response': result};
     res.send(respons);
